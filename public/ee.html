@@ -50,9 +50,9 @@
 
 			var scores = ee.calculate();
 
-            var div = document.getElementById("score");
+            var div = $("score");
 
-            div.text = scores.total;
+			div.html(scores.total);
 
 			console.log(scores);
 		</script>	
