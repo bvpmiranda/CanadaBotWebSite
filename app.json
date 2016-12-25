@@ -1,8 +1,9 @@
 {
   "name": "CanadaVisa Bot Node.js API",
   "description": "Set of APIs to interact with the CanadaVisa Bot",
-  "repository": "https://github.com/bvpmiranda/CanadaBotWebSite",
+  "repository": "https://github.com/bvpmiranda/CanadaVisaBot",
   "logo": "",
   "keywords": ["canada", "visa", "bot"],
-  "image": ""
+  "addons": ["mongolab"]
 }
+
