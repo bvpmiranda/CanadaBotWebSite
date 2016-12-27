@@ -16,7 +16,21 @@
 	<body>
         Express Entry Score: <div id="score"></div>
 		<script>
-			var ee = new calculator_EE20161119();
+			$.ajax({
+				type: 'POST',
+				url: urlBase + 'api/' + api + 'API/' + metodo,
+				cache: false,
+				dataType: 'json',
+				data: (pesquisa === null ? null : acertaPesquisa(pesquisa))
+			}).success(function (data, textStatus, jqXHR)
+			{
+				console.log(data);
+			}).error(function (jqXHR, textStatus, errorThrown)
+			{
+				console.log(jqXHR.responseText);
+			});
+
+			/*var ee = new calculator_EE20161119();
 
 			// Determine if calculate as married or single
 			ee.married = true;
@@ -54,7 +68,7 @@
 
 			div.html(scores.total);
 
-			console.log(scores);
+			console.log(scores);*/
 		</script>	
 	</body>
 </html>
