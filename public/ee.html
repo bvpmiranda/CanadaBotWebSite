@@ -16,21 +16,7 @@
 	<body>
         Express Entry Score: <div id="score"></div>
 		<script>
-			$.ajax({
-				type: 'GET',
-				url: 'https://bvpmiranda-canadavisabot.herokuapp.com/expressEntry',
-				cache: false,
-				dataType: 'json',
-				data: JSON.stringify({a: 1})
-			}).success(function (data, textStatus, jqXHR)
-			{
-				console.log(data);
-			}).error(function (jqXHR, textStatus, errorThrown)
-			{
-				console.log(jqXHR.responseText);
-			});
-
-			/*var ee = new calculator_EE20161119();
+			var ee = new calculator_EE20161119();
 
 			// Determine if calculate as married or single
 			ee.married = true;
@@ -68,7 +54,21 @@
 
 			div.html(scores.total);
 
-			console.log(scores);*/
+			console.log(scores);
+
+			$.ajax({
+				type: 'GET',
+				url: 'https://bvpmiranda-canadavisabot.herokuapp.com/expressEntry',
+				cache: false,
+				dataType: 'json',
+				data: JSON.stringify({a: 1})
+			}).success(function (data, textStatus, jqXHR)
+			{
+				console.log(data);
+			}).error(function (jqXHR, textStatus, errorThrown)
+			{
+				console.log(jqXHR.responseText);
+			});
 		</script>	
 	</body>
 </html>
