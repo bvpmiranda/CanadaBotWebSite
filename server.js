@@ -13,8 +13,8 @@ function handleError(res, reason, message, code) {
 }
 
 app.get("/expressEntry", function(req, res) {
-    var calculatorExport = require("./calculator");
-    var calculator = new calculatorExport();
+    //var calculatorExport = require("./calculator");
+    //var calculator = new calculatorExport();
 
     //res.status(200).json(calculator.test());
     
