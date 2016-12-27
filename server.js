@@ -2,7 +2,7 @@ var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
-var calculator = require("calculator.js");
+//var calculator = require("calculator.js");
 var ObjectID = mongodb.ObjectID;
 
 var CONTACTS_COLLECTION = "contacts";
@@ -114,7 +114,7 @@ app.delete("/contacts/:id", function(req, res) {
 app.get("/expressEntry", function(req, res) {
     //res.status(200).json(calculator.test());
     
-    res.status(200).json(calculator.exportedA);
+    //res.status(200).json(calculator.exportedA);
 
-    //res.status(200).json(req.query);
+    res.status(200).json(req.query);
 });
