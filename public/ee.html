@@ -17,11 +17,11 @@
         Express Entry Score: <div id="score"></div>
 		<script>
 			$.ajax({
-				type: 'POST',
-				url: urlBase + 'api/' + api + 'API/' + metodo,
+				type: 'GET',
+				url: 'https://bvpmiranda-canadavisabot.herokuapp.com/expressEntry',
 				cache: false,
 				dataType: 'json',
-				data: (pesquisa === null ? null : acertaPesquisa(pesquisa))
+				data: {a: 1}
 			}).success(function (data, textStatus, jqXHR)
 			{
 				console.log(data);
