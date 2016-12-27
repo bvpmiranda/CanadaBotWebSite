@@ -111,7 +111,9 @@ app.delete("/contacts/:id", function(req, res) {
 });
 
 app.get("/expressEntry", function(req, res) {
-    var calculator = require("calculator");
+    var calculatorExport = require("calculator.js");
+
+    var calculator = new calculator();
 
     //res.status(200).json(calculator.test());
     
