@@ -1,4 +1,13 @@
-﻿/**
+﻿module.exports = {
+  educationLevel: educationLevel,
+  educationInCanada: educationInCanada,
+  languageTest: languageTest,
+  nocList: nocList,
+  calculator: calculator_EE20161119,
+  test: function(){ return 'Working'}
+};
+
+/**
  * Enum for Education Level
  * @readonly
  * @enum {number}
