@@ -21,7 +21,7 @@
 				url: 'https://bvpmiranda-canadavisabot.herokuapp.com/expressEntry',
 				cache: false,
 				dataType: 'json',
-				data: {a: 1}
+				data: JSON.stringify({a: 1})
 			}).success(function (data, textStatus, jqXHR)
 			{
 				console.log(data);
