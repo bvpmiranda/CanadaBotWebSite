@@ -1,10 +1,16 @@
-﻿module.exports = {
+﻿/*module.exports = {
   educationLevel: educationLevel,
   educationInCanada: educationInCanada,
   languageTest: languageTest,
   nocList: nocList,
   calculator: calculator_EE20161119,
-  test: function(){ return 'Working'}
+  test: function() { return 'Working'; }
+};*/
+
+module.exports={
+    exportedA: 1,
+    exportedB: 2,
+    exportedC: 3
 };
 
 /**
