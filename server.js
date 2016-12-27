@@ -111,5 +111,5 @@ app.delete("/contacts/:id", function(req, res) {
 });
 
 app.get("/expressEntry", function(req, res) {
-  res.status(200).json(req);
+    res.status(200).json({b: 2});
 });
