@@ -221,6 +221,9 @@ var questionFlow = function (request) {
 
 	if (payload === undefined || payload === '') payload = null;
 
+	if (typeof(payload) === 'string')
+		payload = JSON.parse(payload);
+
 	var responseJSON = {
 		"response": null, // what the bot will respond with (more is appended below)
 		"continue": false, // denotes that Motion AI should hit this module again, rather than continue further in the flow
@@ -1104,7 +1107,7 @@ var questionFlow = function (request) {
 		}
 	}
 
-	responseJSON.customPayload = payload;
+	responseJSON.customPayload = JSON.strigify(payload);
 
 	return responseJSON;
 }
