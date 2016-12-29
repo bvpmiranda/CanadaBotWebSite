@@ -219,6 +219,8 @@ function validateLanguageScore(test, ability, score) {
 var questionFlow = function (request) {
 	var payload = request.customPayload;
 
+	console.log('payload', request);
+
 	if (payload === undefined || payload === '') payload = null;
 
 	if (typeof(payload) === 'string')
