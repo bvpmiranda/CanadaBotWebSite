@@ -710,7 +710,20 @@ var questionFlow = function (request) {
 					break;
 
 				case questions.nominationCertificate:
-					payload.question = questions.spouseEducationLevel;
+					if (Boolean.parse(payload.married))
+					{
+						if (Boolean.parse(payload.spouseCanadianCitizen))
+							payload.question = questions.calculate;
+						else
+						{
+							if (Boolean.parse(payload.spouseCommingAlong))
+								payload.question = questions.spouseEducationLevel;
+							else
+								payload.question = questions.calculate;
+						}
+					}
+					else
+						payload.question = questions.calculate;
 					break;
 
 				case questions.spouseEducationLevel:
