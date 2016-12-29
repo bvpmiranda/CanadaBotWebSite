@@ -25,8 +25,6 @@ app.get("/expressEntry", function (req, res) {
 	var flow = require('./expressEntry/expressEntryFlow');
 	var calculator = require('./expressEntry/expressEntry');
 
-	//console.log('req.query', req.query);
-
 	var nextFlow = flow.nextFlow(req.query);
 
 	if (nextFlow.customPayload.question === 'CALC')
@@ -37,54 +35,4 @@ app.get("/expressEntry", function (req, res) {
 	}
 
 	res.status(200).json(nextFlow);
-
-
-	/*
-	var parameters = {
-		// Determine if calculate as married or single
-		married: true,
-		spouseCanadianCitizen: false,
-		spouseCommingAlong: true,
-
-		// Core/Humam Capital Factors
-		age: 33,
-		educationLevel: calculatorExport.educationLevel.BachelorsDegree,
-		firstLanguage: {
-			test: calculatorExport.languageTest.ielts,
-			speaking: 7,
-			listening: 8,
-			reading: 7,
-			writting: 7
-		},
-		workInCanada: 0,
-		workExperience: 13,
-
-		//Spouse Factors
-		spouseEducationLevel: calculatorExport.educationLevel.BachelorsDegree,
-		spouseLanguage: {
-			test: calculatorExport.languageTest.ielts,
-			speaking: 7,
-			listening: 8,
-			reading: 7,
-			writting: 7
-		},
-		spouseWorkInCanada: 0,
-
-		//Skill Transferability Factors
-		certificateFromProvince: false,
-		nocJobOffer: null,
-		nomination: false,
-
-	}
-
-	var scores = new calculatorExport.calculator(parameters);
-
-	//var scores = calculator.calculate();
-
-	//res.status(200).json(calculator.test());
-
-	res.status(200).json(scores);
-
-	//res.status(200).json(req.query);
-	*/
 });
