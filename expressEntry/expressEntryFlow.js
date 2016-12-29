@@ -227,6 +227,8 @@ var questionFlow = function (request) {
 					case 'Never Married / Single':
 					case 'Widowed':
 						payload.married = false;
+						payload.spouseCanadianCitizen = false;
+						payload.spouseCommingAlong = false;
 						break;
 
 					case 'Common-Law':
@@ -242,6 +244,7 @@ var questionFlow = function (request) {
 
 			case questions.spouseCanadianCitizen:
 				payload.spouseCanadianCitizen = (request.reply === 'Yes');
+				if (!payload.spouseCanadianCitizen) payload.spouseCommingAlong = false;
 				break;
 
 			case questions.spouseCommingAlong:
