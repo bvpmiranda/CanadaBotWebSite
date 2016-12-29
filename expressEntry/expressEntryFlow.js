@@ -78,46 +78,11 @@ var nocList = {
  * Create the object with the languague test properties
  */
 function languageObject() {
-	return {/** {enum} Language test taken
-		 * 
-		 * Use the languageTest enum
-		 */
+	return {
 		test: null,
-		/** None: 0 to 10
-		 * 
-		 * CELPIP: 0 to 12
-		 * 
-		 * IELTS: 0.0 to 9.0
-		 * 
-		 * TEF: 0 to 450
-		 */
 		speaking: null,
-		/** None: 0 to 10
-		 * 
-		 * CELPIP: 0 to 12
-		 * 
-		 * IELTS: 0.0 to 9.0
-		 * 
-		 * TEF: 0 to 360
-		 */
 		listening: null,
-		/** None: 0 to 10
-		 * 
-		 * CELPIP: 0 to 12
-		 * 
-		 * IELTS: 0.0 to 9.0
-		 * 
-		 * TEF: 0 to 300
-		 */
 		reading: null,
-		/** None: 0 to 10
-		 * 
-		 * CELPIP: 0 to 12
-		 * 
-		 * IELTS: 0.0 to 9.0
-		 * 
-		 * TEF: 0 to 450
-		 */
 		writing: null
 	}
 }
@@ -223,7 +188,7 @@ var questionFlow = function (request) {
 
 	if (payload === undefined || payload === '') payload = null;
 
-	if (typeof(payload) === 'string')
+	if (typeof (payload) === 'string')
 		payload = JSON.parse(payload);
 
 	var responseJSON = {
@@ -269,6 +234,9 @@ var questionFlow = function (request) {
 						payload.married = true;
 						break;
 
+					default:
+						repeatQuestion = true;
+						break;
 				}
 				break;
 
@@ -296,31 +264,34 @@ var questionFlow = function (request) {
 
 					case 'Secondary diploma (high school graduation)':
 						payload.educationLevel = educationLevel.Secondary;
-
 						break;
+
 					case 'One-year degree, diploma or certificate from  a university, college, trade or technical school, or other institute':
 						payload.educationLevel = educationLevel.OneYearDegree;
-
 						break;
+
 					case 'Two-year program at a university, college, trade or technical school, or other institute':
 						payload.educationLevel = educationLevel.TwoYearDegree;
-
 						break;
+
 					case 'Bachelor\'s degree OR  a three or more year program at a university, college, trade or technical school, or other institute':
 						payload.educationLevel = educationLevel.BachelorsDegree;
-
 						break;
+
 					case 'Two or more certificates, diplomas, or degrees. One must be for a program of three or more years':
 						payload.educationLevel = educationLevel.TwoOrMoreDegress;
-
 						break;
+
 					case 'Master\'s degree, OR professional degree needed to practice in a licensed profession (For “professional degree,” the degree program must have been in: medicine, veterinary medicine, dentistry, optometry, law, chiropractic medicine, or pharmacy.)':
 						payload.educationLevel = educationLevel.MastersDegree;
-
 						break;
+
 					case 'Doctoral level university degree (Ph.D.)':
 						payload.educationLevel = educationLevel.DoctoralDegree;
+						break;
 
+					default:
+						repeatQuestion = true;
 						break;
 				}
 				break;
@@ -341,6 +312,10 @@ var questionFlow = function (request) {
 
 					case 'Degree, diploma or certificate of three years or longer OR a Master’s, professional or doctoral degree of at least one academic year':
 						payload.educationInCanada = educationInCanada.ThreeOrMoreYearsDegree;
+						break;
+
+					default:
+						repeatQuestion = true;
 						break;
 				}
 				break;
@@ -364,6 +339,10 @@ var questionFlow = function (request) {
 
 					case 'TEF':
 						payload.firstLanguage.test = languageTest.tef;
+						break;
+
+					default:
+						repeatQuestion = true;
 						break;
 				}
 				break;
@@ -415,6 +394,10 @@ var questionFlow = function (request) {
 
 					case 'TEF':
 						payload.secondLanguage.test = languageTest.tef;
+						break;
+
+					default:
+						repeatQuestion = true;
 						break;
 				}
 				break;
@@ -495,6 +478,10 @@ var questionFlow = function (request) {
 					case 'D':
 						payload.nocJobOffer = nocList.D;
 						break;
+
+					default:
+						repeatQuestion = true;
+						break;
 				}
 				break;
 
@@ -537,6 +524,10 @@ var questionFlow = function (request) {
 						payload.spouseEducationLevel = educationLevel.DoctoralDegree;
 
 						break;
+
+					default:
+						repeatQuestion = true;
+						break;
 				}
 				break;
 
@@ -566,6 +557,10 @@ var questionFlow = function (request) {
 
 					case 'TEF':
 						payload.spouseLanguage.test = languageTest.tef;
+						break;
+
+					default:
+						repeatQuestion = true;
 						break;
 				}
 				break;

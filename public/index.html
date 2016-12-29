@@ -20,15 +20,8 @@
 		var question = $("#question");
 
 		var request = {
-			"from": null, // the end-user's identifier (may be FB ID, email address, Slack username etc, depends on bot type)
-			"session": null, // a unique session identifier
-			"botId": null, // the Motion AI ID of the bot
-			"botType": null, // the type of bot this is (FB, Slack etc)
-			"customPayload": null, // a developer-defined payload for carrying information
-			"moduleId": null, // the current Motion AI Module ID
-			"inResponseTo": null, // the Motion AI module that directed the conversation flow to this module
-			"reply": null, // the end-user's reply that led to this module
-			"result": null // any extracted data from the prior module, if applicable
+			"customPayload": null,
+			"reply": null
 		}
 
 		request.customPayload = {
@@ -63,17 +56,11 @@
 			}
 		};
 
-		request = {
-			from: '2225fb911de18cc45ec724bc5aca3910', 
-			session: '2225fb911de18cc45ec724bc5aca3910', 
-			result: '', 
-			botId: '24351', 
-			botType: 'fb', 
-			reply: 'qwe', 
-			moduleId: '288610', 
-			inResponseTo: '288610', 
-			customPayload: '{"question":"0"}'
-		};
+		request.customPayload = {
+			"question": "12", "name": "Bruno", "married": true, "spouseCanadianCitizen": false, "spouseCommingAlong": true, "age": 33, "educationLevel": 5, "firstLanguage": { "test": 2, "speaking": 7, "listening": 8, "reading": 7, "writing": 7 }, "secondLanguage": { "test": 0, "speaking": null, "listening": null, "reading": null, "writing": null }, "workInCanada": 0, "workExperience": 14, "certificateFromProvince": false, "validJobOffer": false, "nomination": false, "spouseEducationLevel": 5, "spouseWorkInCanada": 0
+		}
+
+		request.reply = 'No'
 
 		//request.customPayload = '{"question":"0"}';
 
