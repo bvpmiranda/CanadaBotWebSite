@@ -902,7 +902,7 @@ var questionFlow = function (request) {
 			case questions.secondLanguageTest:
 				responseJSON.response = "Did you take a second language test?";
 
-				if (payload.secondLanguage.test == languageTest.tef)
+				if (payload.firstLanguage.test == languageTest.tef)
 					responseJSON.quickReplies = ['No',
 						'CELPIP',
 						'IELTS'];
