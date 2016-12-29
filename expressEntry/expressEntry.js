@@ -1428,10 +1428,10 @@ function adjustParameters() {
 	if (calculatorParameters.educationInCanada !== null) calculatorParameters.educationInCanada = (isNaN(calculatorParameters.educationInCanada) ? null : parseInt(calculatorParameters.educationInCanada));
 
 	if (calculatorParameters.firstLanguage.test !== null) calculatorParameters.firstLanguage.test = (isNaN(calculatorParameters.firstLanguage.test) ? null : parseInt(calculatorParameters.firstLanguage.test));
-	if (calculatorParameters.firstLanguage.speaking !== null && calculatorParameters.firstLanguage.speaking !== '') calculatorParameters.firstLanguage.speaking = (isNaN(calculatorParameters.firstLanguage.speaking) ? null : parseFloat(calculatorParameters.firstLanguage.speaking));
-	if (calculatorParameters.firstLanguage.listening !== null && calculatorParameters.firstLanguage.listening !== '') calculatorParameters.firstLanguage.listening = (isNaN(calculatorParameters.firstLanguage.listening) ? null : parseFloat(calculatorParameters.firstLanguage.listening));
-	if (calculatorParameters.firstLanguage.reading !== null && calculatorParameters.firstLanguage.reading !== '') calculatorParameters.firstLanguage.reading = (isNaN(calculatorParameters.firstLanguage.reading) ? null : parseFloat(calculatorParameters.firstLanguage.reading));
-	if (calculatorParameters.firstLanguage.writing !== null && calculatorParameters.firstLanguage.writing !== '') calculatorParameters.firstLanguage.writing = (isNaN(calculatorParameters.firstLanguage.writing) ? null : parseFloat(calculatorParameters.firstLanguage.writing));
+	if (calculatorParameters.firstLanguage.speaking !== null) calculatorParameters.firstLanguage.speaking = (isNaN(calculatorParameters.firstLanguage.speaking) ? null : parseFloat(calculatorParameters.firstLanguage.speaking));
+	if (calculatorParameters.firstLanguage.listening !== null) calculatorParameters.firstLanguage.listening = (isNaN(calculatorParameters.firstLanguage.listening) ? null : parseFloat(calculatorParameters.firstLanguage.listening));
+	if (calculatorParameters.firstLanguage.reading !== null) calculatorParameters.firstLanguage.reading = (isNaN(calculatorParameters.firstLanguage.reading) ? null : parseFloat(calculatorParameters.firstLanguage.reading));
+	if (calculatorParameters.firstLanguage.writing !== null) calculatorParameters.firstLanguage.writing = (isNaN(calculatorParameters.firstLanguage.writing) ? null : parseFloat(calculatorParameters.firstLanguage.writing));
 
 	if (calculatorParameters.secondLanguage.test !== null) calculatorParameters.secondLanguage.test = (isNaN(calculatorParameters.secondLanguage.test) ? null : parseInt(calculatorParameters.secondLanguage.test));
 	if (calculatorParameters.secondLanguage.speaking === '') calculatorParameters.secondLanguage.speaking = null;
@@ -1543,30 +1543,69 @@ function validate() {
 		else
 			if (isNaN(calculatorParameters.secondLanguage.test))
 				result.push('secondLanguage.test');
+			else
+				if (calculatorParameters.secondLanguage.test !== languageTest.none)
+				{
+					if (calculatorParameters.secondLanguage.speaking === null)
+						result.push('secondLanguage.speaking');
+					else
+						if (isNaN(calculatorParameters.secondLanguage.speaking))
+							result.push('secondLanguage.speaking');
 
-		if (calculatorParameters.secondLanguage.speaking === null)
-			result.push('secondLanguage.speaking');
-		else
-			if (isNaN(calculatorParameters.secondLanguage.speaking))
-				result.push('secondLanguage.speaking');
+					if (calculatorParameters.secondLanguage.listening === null)
+						result.push('secondLanguage.listening');
+					else
+						if (isNaN(calculatorParameters.secondLanguage.listening))
+							result.push('secondLanguage.listening');
 
-		if (calculatorParameters.secondLanguage.listening === null)
-			result.push('secondLanguage.listening');
-		else
-			if (isNaN(calculatorParameters.secondLanguage.listening))
-				result.push('secondLanguage.listening');
+					if (calculatorParameters.secondLanguage.reading === null)
+						result.push('secondLanguage.reading');
+					else
+						if (isNaN(calculatorParameters.secondLanguage.reading))
+							result.push('secondLanguage.reading');
 
-		if (calculatorParameters.secondLanguage.reading === null)
-			result.push('secondLanguage.reading');
-		else
-			if (isNaN(calculatorParameters.secondLanguage.reading))
-				result.push('secondLanguage.reading');
+					if (calculatorParameters.secondLanguage.writing === null)
+						result.push('secondLanguage.writing');
+					else
+						if (isNaN(calculatorParameters.secondLanguage.writing))
+							result.push('secondLanguage.writing');
+				}
+	}
 
-		if (calculatorParameters.secondLanguage.writing === null)
-			result.push('secondLanguage.writing');
+	if (calculatorParameters.spouseLanguage.test !== null || calculatorParameters.spouseLanguage.speaking !== null || calculatorParameters.spouseLanguage.listening !== null || calculatorParameters.spouseLanguage.reading !== null || calculatorParameters.spouseLanguage.speaking !== null)
+	{
+		if (calculatorParameters.spouseLanguage.test === null)
+			result.push('spouseLanguage.test');
 		else
-			if (isNaN(calculatorParameters.secondLanguage.writing))
-				result.push('secondLanguage.writing');
+			if (isNaN(calculatorParameters.spouseLanguage.test))
+				result.push('spouseLanguage.test');
+			else
+				if (calculatorParameters.spouseLanguage.test !== languageTest.none)
+				{
+					if (calculatorParameters.spouseLanguage.speaking === null)
+						result.push('spouseLanguage.speaking');
+					else
+						if (isNaN(calculatorParameters.spouseLanguage.speaking))
+							result.push('spouseLanguage.speaking');
+
+					if (calculatorParameters.spouseLanguage.listening === null)
+						result.push('spouseLanguage.listening');
+					else
+						if (isNaN(calculatorParameters.spouseLanguage.listening))
+							result.push('spouseLanguage.listening');
+
+					if (calculatorParameters.spouseLanguage.reading === null)
+						result.push('spouseLanguage.reading');
+					else
+						if (isNaN(calculatorParameters.spouseLanguage.reading))
+							result.push('spouseLanguage.reading');
+
+					if (calculatorParameters.spouseLanguage.writing === null)
+						result.push('spouseLanguage.writing');
+					else
+						if (isNaN(calculatorParameters.spouseLanguage.writing))
+							result.push('spouseLanguage.writing');
+				}
 	}
 
 	return (result.length === 0 ? true : result);
