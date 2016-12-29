@@ -18,7 +18,7 @@ app.listen(app.get('port'), function () {
 });
 
 app.get("/test"), function (req, res) {
-	res.status(200).json(1);
+	res.status(200).json({a: 1});
 }
 
 app.get("/expressEntry", function (req, res) {
