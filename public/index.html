@@ -1,74 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>VisaBot CRS Calculator</title>
 
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		
-		<script src="/scripts/ee20161119.js"></script>
-	</head>
+<head>
+	<title>VisaBot CRS Calculator</title>
 
-	<body>
-        Express Entry Score: <div id="score"></div>
-		<script>
-			var ee = new calculator_EE20161119();
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
+	<script src="scripts/expressEntry.js"></script>
+</head>
+
+<body>
+	<div id="question"></div>
+	<script>
+		var question = $("#question");
+
+		var request = {
+			"from": null, // the end-user's identifier (may be FB ID, email address, Slack username etc, depends on bot type)
+			"session": null, // a unique session identifier
+			"botId": null, // the Motion AI ID of the bot
+			"botType": null, // the type of bot this is (FB, Slack etc)
+			"customPayload": null, // a developer-defined payload for carrying information
+			"moduleId": null, // the current Motion AI Module ID
+			"inResponseTo": null, // the Motion AI module that directed the conversation flow to this module
+			"reply": null, // the end-user's reply that led to this module
+			"result": null // any extracted data from the prior module, if applicable
+		}
+
+		request.customPayload = {
+			question: '12W',
+			name: 'Bruno',
+			married: true,
+			spouseCanadianCitizen: false,
+			spouseCommingAlong: true,
+			age: 33,
+			educationLevel: 5,
+			firstLanguage: {
+				test: 2,
+				speaking: 7,
+				listening: 8,
+				reading: 7,
+				writting: 7
+			},
+			workInCanada: 0,
+			workExperience: 14,
+			certificateFromProvince: false,
+			validJobOffer: false,
+			nocJobOffer: null,
+			nomination: false,
+			spouseEducationLevel: 5,
+			spouseWorkInCanada: 0,
+			spouseLanguage: {
+				test: 2,
+				speaking: 7,
+				listening: 8,
+				reading: 7,
+				writting: 7
+			}
+		};
+
+		request.reply = '7'
+
+		console.log('Request:', request);
+
+		$.ajax({
+			type: 'GET',
+			url: 'expressEntry',
+			cache: false,
+			dataType: 'json',
+			data: request
+		}).success(function (data, textStatus, jqXHR)
+		{
+			question.html(data.response + (data.quickReplies === null ? '' : '<br /><br />' + data.quickReplies));
+
+			console.log('Payload:', data.customPayload);
+		}).error(function (jqXHR, textStatus, errorThrown)
+		{
+			console.log('Error: ', jqXHR.responseText);
+		});
+
+		/*
+		var parameters = {
 			// Determine if calculate as married or single
-			ee.married = true;
-			ee.spouseCanadianCitizen = false;
-			ee.spouseCommingAlong = true;
+			married: true,
+			spouseCanadianCitizen: false,
+			spouseCommingAlong: true,
 
 			// Core/Humam Capital Factors
-			ee.age = 33;
-			ee.educationLevel = educationLevel.BachelorsDegree;
-			ee.firstLanguage.test = languageTest.ielts;
-			ee.firstLanguage.speaking = 7;
-			ee.firstLanguage.listening = 8;
-			ee.firstLanguage.reading = 7;
-			ee.firstLanguage.writting = 7;
-			ee.workInCanada = 0;
-			ee.workExperience = 13;
+			age: 33,
+			educationLevel: educationLevel.BachelorsDegree,
+			firstLanguage: {
+				test: languageTest.ielts,
+				speaking: 7,
+				listening: 8,
+				reading: 7,
+				writting: 7
+			},
+			workInCanada: 0,
+			workExperience: 13,
 
 			//Spouse Factors
-			ee.spouseEducationLevel = educationLevel.BachelorsDegree;
-			ee.spouseLanguage.test = languageTest.ielts;
-			ee.spouseLanguage.speaking = 7;
-			ee.spouseLanguage.listening = 8;
-			ee.spouseLanguage.reading = 7;
-			ee.spouseLanguage.writting = 7;
-			ee.spouseWorkInCanada = 0;
+			spouseEducationLevel: educationLevel.BachelorsDegree,
+			spouseLanguage: {
+				test: languageTest.ielts,
+				speaking: 7,
+				listening: 8,
+				reading: 7,
+				writting: 7
+			},
+			spouseWorkInCanada: 0,
 
 			//Skill Transferability Factors
-			ee.certificateFromProvince = false;
-			ee.nocJobOffer = null;
-			ee.nomination = false;
+			certificateFromProvince: false,
+			nocJobOffer: null,
+			nomination: false,
 
-			var scores = ee.calculate();
+		}
 
-            var div = $("#score");
+		console.log(parameters);
 
-			div.html(scores.total);
+		var scores = calculate(parameters);
 
-			console.log(scores);
+		console.log(scores);
+		*/
+	</script>
+</body>
 
-			$.ajax({
-				type: 'GET',
-				url: 'expressEntry',
-				cache: false,
-				dataType: 'json',
-				data: JSON.stringify({a: 1})
-			}).success(function (data, textStatus, jqXHR)
-			{
-				console.log(data);
-			}).error(function (jqXHR, textStatus, errorThrown)
-			{
-				console.log(jqXHR.responseText);
-			});
-		</script>	
-	</body>
 </html>
