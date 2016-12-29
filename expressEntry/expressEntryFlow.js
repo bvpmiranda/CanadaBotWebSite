@@ -223,7 +223,7 @@ var questionFlow = function (request) {
 
 	var responseJSON = {
 		"response": null, // what the bot will respond with (more is appended below)
-		"continue": true, // denotes that Motion AI should hit this module again, rather than continue further in the flow
+		"continue": false, // denotes that Motion AI should hit this module again, rather than continue further in the flow
 		"customPayload": null, // working data to examine in future calls to this function to keep track of state
 		"quickReplies": null, // a JSON object containing suggested/quick replies to display to the user
 		"cards": null // a cards JSON object to display a carousel to the user (see docs)
