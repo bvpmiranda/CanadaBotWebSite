@@ -25,7 +25,7 @@ app.get("/expressEntry", function (req, res) {
 	var flow = require('./expressEntry/expressEntryFlow');
 	var calculator = require('./expressEntry/expressEntry');
 
-	console.log('req.query', req.query);
+	//console.log('req.query', req.query);
 
 	var nextFlow = flow.nextFlow(req.query);
 
