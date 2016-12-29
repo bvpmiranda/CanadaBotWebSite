@@ -1107,7 +1107,7 @@ var questionFlow = function (request) {
 		}
 	}
 
-	responseJSON.customPayload = JSON.strigify(payload);
+	responseJSON.customPayload = payload;
 
 	return responseJSON;
 }
