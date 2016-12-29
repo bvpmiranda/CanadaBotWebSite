@@ -17,6 +17,10 @@ app.listen(app.get('port'), function () {
 	console.log('Node app is running on port', app.get('port'));
 });
 
+app.get("/test"), function (req, res) {
+	res.status(200).json(req);
+}
+
 app.get("/expressEntry", function (req, res) {
 	var flow = require('./expressEntry/expressEntryFlow');
 	var calculator = require('./expressEntry/expressEntry');
