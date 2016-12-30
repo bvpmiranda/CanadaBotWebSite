@@ -270,8 +270,6 @@ var scores = {
  * If the person is married, but the spouse is Canadian or is not comming along,
  * the calculations are done as single.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
- * 
  * @returns {Boolean} 
  *
  * @author Bruno Miranda
@@ -287,8 +285,6 @@ function isSingle() {
 
 /**
  * Calculates the score for the Additional Points
- * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * 
  * @returns {object} Returns the ammount of points given for the section. 
  *
@@ -315,8 +311,6 @@ function calculateAdditionalPoins() {
 
 /**
  * Calculates the score for the age.
- * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * 
  * @returns {Number} Returns the ammount of points given. 
  *
@@ -437,7 +431,6 @@ function calculateCelpip(language, principalApplicant, firstLanguage) {
 /**
  * Calculates the score for the certificate of qualification transferability.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * @param {number} clb5Count Quantity of CLB5 or higher on the laguage skills 
  * @param {number} clb7Count Quantity of CLB7 or higher on the laguage skills 
  * 
@@ -460,7 +453,6 @@ function calculateCertificateOfQualitication(clb5Count, clb7Count) {
 /**
  * Calculates the score for the Language test based on the CLB skill.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * @param {object} clbLevel Pass the clb level of the skill
  * @param {boolean} principalApplicant Indicates if the score is for the principal applicant 
  * @param {boolean} firstLanguage Indicates if the score is for the first or second language 
@@ -523,7 +515,6 @@ var calculateCLB = function (clbLevel, principalApplicant, firstLanguage) {
 /**
  * Calculates the score for the Language test based on the CLB.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * @param {object} clbs Pass the CLB level for each skill
  * @param {boolean} principalApplicant Indicates if the score is for the principal applicant 
  * @param {boolean} firstLanguage Indicates if the score is for the first or second language 
@@ -548,8 +539,6 @@ var calculateCLBs = function (clbs, principalApplicant, firstLanguage) {
 
 /**
  * Calculates the score for the Section Core/Human Capital Factors
- * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * 
  * @returns {object} Returns the ammount of points given for the section. 
  *
@@ -600,7 +589,6 @@ var calculateCoreHumanCapitalFactors = function () {
 /**
  * Calculates the score for the education of the principal applicant.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * @param {boolean} principalApplicant Indicates if the score is for the principal applicant 
  * 
  * @returns {Number} Returns the ammount of points given.
@@ -666,8 +654,6 @@ var calculateEducation = function (principalApplicant) {
 /**
  * Calculates the score for the education in Canada of the principal applicant.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
- * 
  * @returns {Number} Returns the ammount of points given. 
  *
  * @author Bruno Miranda
@@ -691,7 +677,6 @@ var calculateEducationInCanada = function () {
 /**
  * Calculates the score for the education transferability.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * @param {number} clb7Count Quantity of CLB7 or higher on the laguage skills 
  * @param {number} clb9Count Quantity of CLB9 or higher on the laguage skills 
  * 
@@ -750,7 +735,6 @@ var calculateEducationTransferability = function (clb7Count, clb9Count) {
 /**
  * Calculates the score for the foreign work experience transferability.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * @param {number} clb7Count Quantity of CLB7 or higher on the laguage skills 
  * @param {number} clb9Count Quantity of CLB9 or higher on the laguage skills 
  * 
@@ -806,7 +790,6 @@ var calculateForeignWorkExperienceTransferability = function (clb7Count, clb9Cou
 /**
  * Calculates the CLB levels for the IELTS test.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * @param {object} language Pass the first or second language object
  * @param {boolean} principalApplicant Indicates if the score is for the principal applicant 
  * @param {boolean} firstLanguage Indicates if the score is for the first or second language 
@@ -972,8 +955,6 @@ var calculateIelts = function (language, principalApplicant, firstLanguage) {
 /**
  * Calculates the score for the Job Offer
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
- * 
  * @returns {Number} Returns the ammount of points given. 
  *
  * @author Bruno Miranda
@@ -997,7 +978,6 @@ var calculateJobOffer = function () {
 /**
  * Calculates the score for the language.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * @param {boolean} principalApplicant Indicates if the score is for the principal applicant 
  * @param {boolean} firstLanguage Indicates if the score is for the first or second language 
  * 
@@ -1039,8 +1019,6 @@ var calculateLanguage = function (principalApplicant, firstLanguage) {
 /**
  * Calculates the score for the Provincial Nomination
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
- * 
  * @returns {Number} Returns the ammount of points given. 
  *
  * @author Bruno Miranda
@@ -1054,8 +1032,6 @@ var calculateProvincialNomination = function () {
 
 /**
  * Calculates the score for the Skill Transferability Factors
- * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * 
  * @returns {object} Returns the ammount of points given for the section. 
  *
@@ -1082,7 +1058,7 @@ var calculateSkillTransferabilityFactors = function () {
 	switch (calculatorParameters.firstLanguage.test)
 	{
 		case languageTest.none:
-			clbs = language;
+			clbs = calculatorParameters.firstLanguage;
 			break;
 
 		case languageTest.celpip:
@@ -1157,8 +1133,6 @@ var calculateSkillTransferabilityFactors = function () {
 /**
  * Calculates the score for the Section Spouse Factors
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
- * 
  * @returns {object} Returns the ammount of points given for the section. 
  *
  * @author Bruno Miranda
@@ -1194,7 +1168,6 @@ var calculateSpouseFactors = function () {
 /**
 	 * Calculates the CLB levels for the TEF test.
 	 * 
-	 * @param {object} calculatorParameters calculatorParameters for the calculation 
 	 * @param {object} language Pass the first or second language object
 	 * @param {boolean} principalApplicant Indicates if the score is for the principal applicant 
 	 * @param {boolean} firstLanguage Indicates if the score is for the first or second language 
@@ -1360,7 +1333,6 @@ function calculateTef(language, principalApplicant, firstLanguage) {
 /**
  * Calculates the score for the work experience in Canada.
  * 
- * @param {object} calculatorParameters calculatorParameters for the calculation 
  * @param {boolean} principalApplicant Indicates if the score is for the principal applicant 
  * 
  * @returns {Number} Returns the ammount of points given. 
